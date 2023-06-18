@@ -9,7 +9,7 @@ Apache Kafka is an open source distributed event streaming platform. Kafka is us
 	- **Broker-** Producer and consumer will not talk to eacg other and there is a middle man called kafka server/ broker. Producer posts the messages to broker/server. Consumer receives/ consumes messages from broker.
 	- **Cluster-** Cluster is nothing but a group of systems together. There will be one or more Kafka servers in a kafka cluster.
 	- **Topic-** Producer sends N no of messages and consumer consumes the same. We need to categorize the type of messages coming in and going out from the server. Topic is the one who serves this purpose. All relevent messages would be added to a specific topic. Topic specifies the category or classification of the message. Listeners can then just respond to messages that belong to the topics they are listening on.
-	- **Partitions-**
-	- **Offset-**
-	- **Consumer Groups-**
-	- **Zookeeper-**
+	- **Partitions-** If there is huge volume of data, it is difficult to handle it in topics. So we further devide the topic into sub partitions called topic partitioning. We can decide the no of partitions for each topic during kafka topic partitioning.
+	- **Offset-** Whenever the producer send the message, the message will be siting in a topic partition. For each message, a number will be assigned and that is called offset. The purpose of offset is to keep track of messages which are already consumed by the consumer. 
+	- **Consumer Groups-** So one consumer will be consuming all the messages from multiple partitions and which is a overhead for consumer. So instead of one, we can have N no of consumers and they can work together to process the messages which is called a Consumer group. If all consumers are occupied and processing the events, then for the subsequest events will be on hold till the consumer is available. Once the consumer is available, it will be assigned the events from the queue. This is called consumer rebalancing. 
+	- **Zookeeper-** It is a key component of Kafka. It acts as a manager for our complete kafka cluster.
