@@ -14,4 +14,10 @@ Apache Kafka is an open source distributed event/message streaming platform. Kaf
 	- **Consumer Groups-** So one consumer will be consuming all the messages from multiple partitions and which is a overhead for consumer. So instead of one, we can have N no of consumers and they can work together to process the messages which is called a Consumer group. If all consumers are occupied and processing the events, then for the subsequest events will be on hold till the consumer is available. Once the consumer is available, it will be assigned the events from the queue. This is called consumer rebalancing. 
 	- **Zookeeper-** It is a key component of Kafka. It acts as a manager for our complete kafka cluster.
 	![Apache Kafka](https://github.com/anand-tummapudi/Kafka/blob/main/assets/kafka.JPG)
-## How to use Kafka broker in in Spring Boot Applications
+## How to use Kafka broker in Spring Boot Applications
+Spring boot provides an efficient packages to integrate kafka. Without springboot, we need to write a vast code to register and call kafka borker server, producer and consumers. 
+- TO make use of kafka in spring boot application, we need to add kafka dependencies for spring boot application. Add kafka related producer and consumer properties in application.properties file.
+~~
+spring.kafka.consumer.bootstrap-servers: 
+
+~~ 
