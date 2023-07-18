@@ -17,7 +17,5 @@ Apache Kafka is an open source distributed event/message streaming platform. Kaf
 ## How to use Kafka broker in Spring Boot Applications
 Spring boot provides an efficient packages to integrate kafka. Without springboot, we need to write a vast code to register and call kafka borker server, producer and consumers. 
 - TO make use of kafka in spring boot application, we need to add kafka dependencies for spring boot application. Add kafka related producer and consumer properties in application.properties file.
-~~
-spring.kafka.consumer.bootstrap-servers: 
-
-~~ 
+~~ spring.kafka.consumer.bootstrap-servers:
+spring.kafka.consumer.bootstrap-servers: ~~ 
