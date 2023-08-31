@@ -18,7 +18,8 @@ Apache Kafka is an open source distributed event/message streaming platform. Kaf
 Spring boot provides an efficient packages to integrate kafka. Without springboot, we need to write a vast code to register and call kafka borker server, producer and consumers. 
 - To make use of kafka in spring boot application, we need to add kafka dependencies for spring boot application. Add kafka related producer and consumer properties in application.properties file.
 
-`` spring.kafka.consumer.bootstrap-servers: localhost:9092, localhost:9091, localhost:9093
+```
+spring.kafka.consumer.bootstrap-servers: localhost:9092, localhost:9091, localhost:9093
 spring.kafka.consumer.group-id: myGroup
 spring.kafka.consumer.auto-offset-reset:earliest
 spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -27,4 +28,4 @@ spring.kafka.consumer.value-deserializer: org.apache.kafka.common.serialization.
 spring.kafka.producer.bootstrap-servers: localhost:9092
 spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
 spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.StringSerializer
-``
+```
