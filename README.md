@@ -64,3 +64,4 @@ spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.St
  ```
  $ kafka-console-consumer.bat --topic first-topic --from-beginning --bootstrap-server localhost:9092
  ```
+ - Create a Kafka consumer lass to consume the messages/events. Create one service class and create a subscriber method to consume messages. We use KafkaLister to subscribe to topic.
