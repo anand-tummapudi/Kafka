@@ -15,7 +15,7 @@ Apache Kafka is an open source distributed event/message streaming platform. Kaf
 	- **Zookeeper-** It is a key component of Kafka. It acts as a manager for our complete kafka cluster.
 	![Apache Kafka](https://github.com/anand-tummapudi/Kafka/blob/main/assets/kafka.JPG)
 ## How to download and run Kafka on windows machine.
-- Download apache kafka from the following URL [Download Kafka](https://kafka.apache.org/downloads)
+- Download apache kafka [Download Kafka](https://kafka.apache.org/downloads)
 - Follow Kafka wuick start guide [Follow Kafka quick start guide](https://kafka.apache.org/quickstart)
 - Run Kafka zookeeper and kafka server from the bin folder. Make sure you are running the exe files from windows folder when you are running Kafka on windowsmachine.
 ```
@@ -37,11 +37,20 @@ $ kafka-console-consumer.bat --topic sample-topic --from-beginning --bootstrap-s
 
 ## How to use Kafka broker in Spring Boot Applications
 Spring boot provides an efficient packages to integrate kafka. Without springboot, we need to write a vast code to register and call kafka borker server, producer and consumers. 
-- To make use of kafka in spring boot application, we need to add kafka dependencies for spring boot application. Add kafka related producer and consumer properties in application.properties file.
-
+- To make use of kafka in spring boot application, we need to add kafka dependencies for spring boot application. Without spring boot, we neeed to write all boiler plate code to configure producer, consumer, kafka template and all other properties required.
+- Checkout spring boot apache kafka documentation [Springboot Kafka](https://docs.spring.io/spring-kafka/reference/html/) 
+- Configure producer and consumer properties in application.properties file. 
+	* spring.kafka.consumer.bootstrap-servers: Configure all apache kafka brokers. Can configure multiple brokers in cluster.
+	* spring.kafka.consumer.group-id: Mention the consumer group, where our consumer belongs to.
+	* spring.kafka.consumer.group-id: This property specifies what to do when there is no initial offset in kafka or if the current offset does not exist on the server.
+	* spring.kafka.consumer.key-deserializer: It is used to deserialize the key in a message
+	* spring.kafka.consumer.value-deserializer: It is used to deserialize the value in a message
+	* spring.kafka.producer.bootstrap-servers: Kafka broker services.
+	* Also we can use similar deserializer classes like consumer for producer messages key and value.
+	
 ```
 spring.kafka.consumer.bootstrap-servers: localhost:9092, localhost:9091, localhost:9093
-spring.kafka.consumer.group-id: myGroup
+spring.kafka.consumer.group-id: consumer-group
 spring.kafka.consumer.auto-offset-reset:earliest
 spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 spring.kafka.consumer.value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -50,3 +59,4 @@ spring.kafka.producer.bootstrap-servers: localhost:9092
 spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
 spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.StringSerializer
 ```
+- Creating a Topic in a spring boot application.
