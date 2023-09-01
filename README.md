@@ -1,7 +1,7 @@
 # Apache Kafka
 Apache Kafka is an open source distributed event/message streaming platform. Kafka is used for the realtime event streaming. Real time event streaming is nothing but continuously sending the stream of events to the system. Kafka server supports distributed systems, meaning that we can create multiple instances of kafka server which serves different regions. If one server is down, another server will come up to process the events.
 - Kafka was originally developed by Linked-in and was subsequently open sourced in 2011.
-- Where does we use Kafka - Let us say there are two systems which talks to each other. When system1 sends the message to System2, System2 is not available to receive the message. There one intermediatory system is required to hold the message till the system2 comes up and sends the message. Kafka serves the purpose of this intermediate system. There are other systems like RabitMQ and Redis also serves the same purpose.
+- Where does we use Kafka? - Let us say there are two systems which talks to each other. When System1 sends the message to System2 and the System2 is not available to receive the message then there is a need for one intermediatory system to hold the message till the System2 comes up and receives the message. Kafka serves the purpose of this intermediate system. There are other systems like RabitMQ and Redis also serves the same purpose.
 - Kafka works in Publisher and Subscriber model. 
 - Components in Kafka
 	- **Producer-** Producer is the source of data who publishes messages or evenets. Producer is an application produces messages and sends to the server. Producer doesn't sent messages directly to the consumer.
@@ -62,5 +62,5 @@ spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.St
 - Creating a rest API to send the messages to Kafka producer. Inject the producer created and send the message from rest service.
 - Once we hit the rest endpoint to send the message to producer and the request is success, we can use the following kafka command to view the message from kafka console.
  ```
- kafka-console-consumer.bat --topic first-topic --from-beginning --bootstrap-server localhost:9092
+ $ kafka-console-consumer.bat --topic first-topic --from-beginning --bootstrap-server localhost:9092
  ```
