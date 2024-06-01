@@ -19,9 +19,19 @@ Apache Kafka is an open source distributed event/message streaming platform. Kaf
 - Follow Kafka wuick start guide [Follow Kafka quick start guide](https://kafka.apache.org/quickstart)
 - Run Kafka zookeeper and kafka server from the bin folder. Make sure you are running the exe files from windows folder when you are running Kafka on windowsmachine.
 ```
-$ zookeeper-server-start.bat "config/zookeeper.properties"
-$ bin/kafka-server-start.bat config/server.properties
+C:\kafka_2.13-3.7.0\bin\windows>zookeeper-server-start.bat "C:\kafka_2.13-3.7.0\config\zookeeper.properties"
+C:\kafka_2.13-3.7.0\bin\windows>kafka-server-start.bat "C:\kafka_2.13-3.7.0\config\server.properties"
 ```
+ - **zookeeper.proerties** file contains configuration settings for zookeeper, which is a coordination service used by Kafka to manage and co ordinate its distributed components.
+   -- dataDir :- directory where zookeeper stores its data.
+   -- clientPort :- port number, the clients uses to coneect to zookeeper.
+   -- tickTime :- length of single tick in millin secods used to determine the length of zookeeper session.
+   -- initLimit :- The no of ticks that a follower zookeeper node will wait before connecting to a leader.
+   -- syncLimit :- The no of ticks that a follower zookeeper node will wait before syncing with a leader.
+   -- server.1,server.2 :- These settings specify the host names or ip addresses of the zookeeper servers.
+   -- weight - The weight of the each zookeeper server.
+   -- leaderServes :- Whether the leader zookeeper node will also act as a follower.
+ 
 - Create Kafka topic using the following command.
 ```
 $ kafka-topics.bat --create --topic "sample-topic" --bootstrap-server localhost:9092
