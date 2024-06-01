@@ -23,6 +23,7 @@ C:\kafka_2.13-3.7.0\bin\windows>zookeeper-server-start.bat "C:\kafka_2.13-3.7.0\
 C:\kafka_2.13-3.7.0\bin\windows>kafka-server-start.bat "C:\kafka_2.13-3.7.0\config\server.properties"
 ```
  - **zookeeper.proerties** file contains configuration settings for zookeeper, which is a coordination service used by Kafka to manage and co ordinate its distributed components.
+   ```
    -- dataDir :- directory where zookeeper stores its data.
    -- clientPort :- port number, the clients uses to coneect to zookeeper.
    -- tickTime :- length of single tick in millin secods used to determine the length of zookeeper session.
@@ -31,7 +32,7 @@ C:\kafka_2.13-3.7.0\bin\windows>kafka-server-start.bat "C:\kafka_2.13-3.7.0\conf
    -- server.1,server.2 :- These settings specify the host names or ip addresses of the zookeeper servers.
    -- weight - The weight of the each zookeeper server.
    -- leaderServes :- Whether the leader zookeeper node will also act as a follower.
- 
+ ```
 - Create Kafka topic using the following command.
 ```
 $ kafka-topics.bat --create --topic "sample-topic" --bootstrap-server localhost:9092
