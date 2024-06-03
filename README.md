@@ -23,17 +23,31 @@ C:\kafka_2.13-3.7.0\bin\windows>zookeeper-server-start.bat "C:\kafka_2.13-3.7.0\
 C:\kafka_2.13-3.7.0\bin\windows>kafka-server-start.bat "C:\kafka_2.13-3.7.0\config\server.properties"
 ```
  - **zookeeper.proerties** file contains configuration settings for zookeeper, which is a coordination service used by Kafka to manage and co ordinate its distributed components.
+
    ```
-   -- dataDir :- directory where zookeeper stores its data.
-   -- clientPort :- port number, the clients uses to coneect to zookeeper.
-   -- tickTime :- length of single tick in millin secods used to determine the length of zookeeper session.
-   -- initLimit :- The no of ticks that a follower zookeeper node will wait before connecting to a leader.
-   -- syncLimit :- The no of ticks that a follower zookeeper node will wait before syncing with a leader.
-   -- server.1,server.2 :- These settings specify the host names or ip addresses of the zookeeper servers.
-   -- weight - The weight of the each zookeeper server.
-   -- leaderServes :- Whether the leader zookeeper node will also act as a follower.
+   dataDir :- directory where zookeeper stores its data.
+   clientPort :- port number, the clients uses to coneect to zookeeper.
+   tickTime :- length of single tick in millin secods used to determine the length of zookeeper session.
+   initLimit :- The no of ticks that a follower zookeeper node will wait before connecting to a leader.
+   syncLimit :- The no of ticks that a follower zookeeper node will wait before syncing with a leader.
+   server.1,server.2 :- These settings specify the host names or ip addresses of the zookeeper servers.
+   weight - The weight of the each zookeeper server.
+   leaderServes :- Whether the leader zookeeper node will also act as a follower.
  ```
+ -- **server.properties** file contains several settings for the kafka server.
+
+ ```
+ Broker Settings :- These include the host and port of the Kafka cluster as well as settings for zookeeper.
+ Consumer Settings :- These include settings for key and value deserialization, auto-offset reset and max poll records.
+ Producer Settings :- These cinclude key and value deserialization, acknowledgements, retries, batch size, linger time and buffer memory.
+ Security settings :- These include settings for SSL/TLS encryption, keystore location and password, and key password.
+ Socket server settings :- These include settings for the socket server, such as the address and port to listen on, and the no of threads to user for receiving and processing requests.
+ Log settings :- These include settings for log directories, log flush policies and log retention policies.
+ Zookeeper settings :- This contains the connecting string and timeout to zookeeper.
+ Group coordinator settings :- These include settings for the group coordinator, such as the initial rebalance delay. 
+```
 - Create Kafka topic using the following command.
+
 ```
 $ kafka-topics.bat --create --topic "sample-topic" --bootstrap-server localhost:9092
 ```
@@ -44,8 +58,11 @@ $ kafka-console-producer.bat --topic sample-topic --bootstrap-server localhost:9
 - Creating the consumer console to consume the messages created from the producer above. Here we need to mention the attribute "--from-beginning" to the consumer command to specify the position to read the messages from. 
 ```
 $ kafka-console-consumer.bat --topic sample-topic --from-beginning --bootstrap-server localhost:9092
+
 ```
+
 ## How to use Kafka broker in Spring Boot Applications
+
 Spring boot provides an efficient packages to integrate kafka. Without springboot, we need to write a vast code to register and call kafka borker server, producer and consumers. 
 - To make use of kafka in spring boot application, we need to add kafka dependencies for spring boot application. Without spring boot, we neeed to write all boiler plate code to configure producer, consumer, kafka template and all other properties required.
 - Checkout spring boot apache kafka documentation [Springboot Kafka](https://docs.spring.io/spring-kafka/reference/html/) 
@@ -57,6 +74,7 @@ Spring boot provides an efficient packages to integrate kafka. Without springboo
 	* spring.kafka.consumer.value-deserializer: It is used to deserialize the value in a message
 	* spring.kafka.producer.bootstrap-servers: Kafka broker services.
 	* Also we can use similar deserializer classes like consumer for producer messages key and value.
+
 ```
 spring.kafka.consumer.bootstrap-servers: localhost:9092, localhost:9091, localhost:9093
 spring.kafka.consumer.group-id: consumer-group
@@ -76,3 +94,5 @@ spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.St
  $ kafka-console-consumer.bat --topic first-topic --from-beginning --bootstrap-server localhost:9092
  ```
  - Create a Kafka consumer lass to consume the messages/events. Create one service class and create a subscriber method to consume messages. We use KafkaLister to subscribe to topic.
+ 
+ 
