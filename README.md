@@ -34,6 +34,7 @@ C:\kafka_2.13-3.7.0\bin\windows>kafka-server-start.bat "C:\kafka_2.13-3.7.0\conf
    weight - The weight of the each zookeeper server.
    leaderServes :- Whether the leader zookeeper node will also act as a follower.
  ```
+
  -- **server.properties** file contains several settings for the kafka server.
 
  ```
@@ -52,13 +53,14 @@ C:\kafka_2.13-3.7.0\bin\windows>kafka-server-start.bat "C:\kafka_2.13-3.7.0\conf
 $ kafka-topics.bat --create --topic "sample-topic" --bootstrap-server localhost:9092
 ```
 - Creating a producer to produce the events. After creating the producer, it will give the shell prompt where ou cn create N number of events or messages you want to create. Once you create, can exit from the shell by hitting ctrl+c.
+
 ```
 $ kafka-console-producer.bat --topic sample-topic --bootstrap-server localhost:9092
 ```
 - Creating the consumer console to consume the messages created from the producer above. Here we need to mention the attribute "--from-beginning" to the consumer command to specify the position to read the messages from. 
+
 ```
 $ kafka-console-consumer.bat --topic sample-topic --from-beginning --bootstrap-server localhost:9092
-
 ```
 
 ## How to use Kafka broker in Spring Boot Applications
@@ -86,13 +88,16 @@ spring.kafka.producer.bootstrap-servers: localhost:9092
 spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
 spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.StringSerializer
 ```
+
 - Creating a Topic in a spring boot application. Create a configuration class and create a method of type NewTopic to create the topic from the TopiCBuilder and return.
 - Create a Producer class - Crete a service class and add KafkaTemplate to it. If we are not using spring boot we need to create Kafka template manually. KafkaTemplate is a thin wrapper around a Kafka producer that plays nicely with other Spring features like dependency injection and automatic configuration. It provides a number of convenience methods for producing to Kafka topics. create a method inside the service class to send messages to kafka topic. 
 - Creating a rest API to send the messages to Kafka producer. Inject the producer created and send the message from rest service.
 - Once we hit the rest endpoint to send the message to producer and the request is success, we can use the following kafka command to view the message from kafka console.
+
  ```
  $ kafka-console-consumer.bat --topic first-topic --from-beginning --bootstrap-server localhost:9092
- ```
- - Create a Kafka consumer lass to consume the messages/events. Create one service class and create a subscriber method to consume messages. We use KafkaLister to subscribe to topic.
+ 
+ 
+ - Create a Kafka consumer class to consume the messages/events. Create one service class and create a subscriber method to consume messages. We use KafkaLister to subscribe to topic.
  
  
